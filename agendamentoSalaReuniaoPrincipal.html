@@ -51,28 +51,6 @@
 </head>
 
 <body>
-    <div class="sidebar">
-        <button class="close-btn" onclick="toggleSidebar()">&#9776;</button>
-        <nav>
-            <ul><br><br>
-                <a href="../General/general.html">
-                    <li class="btn_sidebar">Página Inicial</li>
-                </a>
-                <a href="#section1">
-                    <li class="btn_sidebar">Em Breve</li>
-                </a>
-                <a href="selectRoom.html">
-                    <li class="btn_sidebar">Agendamento Sala de Reunião</li>
-                </a>
-                <a href="https://app.pipefy.com/organizations/301095341/interfaces/922dbb04-623c-40f9-830a-056873561430">
-                    <li class="btn_sidebar">Chamados PipeFy</li>
-                </a>
-                <a href="../../index.html">
-                    <li class="btn_sidebar">Sair</li>
-                </a>
-            </ul>
-        </nav>
-    </div>
 
     <!-- Calendário -->
     <h1 class="h1Txt">Sala de Reunião Principal</h1>
@@ -129,7 +107,7 @@
         document.addEventListener("DOMContentLoaded", function () {
             const token = sessionStorage.getItem('userToken');
             if (token) {
-                fetch('http://3.226.151.106:5000/verify_token', {
+                fetch('http://server_IP/verify_token', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -158,7 +136,7 @@
                                 businessHours: true,
                                 dayMaxEvents: true,
                                 events: function (fetchInfo, successCallback, failureCallback) {
-                                    fetch('http://3.226.151.106:5000/consultEventMeetingRoom01')
+                                    fetch('http://server_IP/consultEventMeetingRoom01')
                                         .then(response => response.json())
                                         .then(data => {
                                             console.log(data);
@@ -244,7 +222,7 @@
                                 var end = document.getElementById('end').value;
                                 var description = document.getElementById('description').value;
 
-                                fetch('http://3.226.151.106:5000/addEventMeetingRoom01', {
+                                fetch('http://server_IP/addEventMeetingRoom01', {
                                     method: 'POST',
                                     headers: {
                                         'Content-Type': 'application/json'
